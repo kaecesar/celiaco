@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprobaste?</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 200px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aprobaste?</h1>
+    <form>
+        <label for="num1">
+            <span>Variable 1</span>
+            <input type="number" placeholder="Dame un numero" id="num1">
+        </label>
+        <label for="num2">
+            <span>Variable 2</span>
+            <input type="number" placeholder="Dame otro numero" id="num2">
+        </label>
+        <label for="num3">
+            <span>Variable 2</span>
+            <input type="number" placeholder="Dame otro numero" id="num3">
+        </label>
+        <button onclick="handleClick()" type="button">Calcular</button>
+    </form>
+    <div id="container"></div>
+    <p><a href="../index.html">Volver</a></p>
+    <script>
+        const $num1 = document.getElementById("num1")
+        const $num2 = document.getElementById("num2")
+        const $num3 = document.getElementById("num3")
+        const $container = document.getElementById("container")
+
+        function handleClick(e) {
+            const a = Number($num1.value)
+            const b = Number($num2.value)
+            const c = Number($num3.value)
+
+            const suma = a + b + c
+            const promedio = suma / 3 
+
+            if (promedio > 7) {
+                $container.innerHTML = `
+                    <p>Promedio = ${promedio}</p>
+                    <p>Aprobaste maquina</p>
+                `
+            } else {
+                $container.innerHTML = `
+                    <p>Promedio = ${promedio}</p>
+                    <p>Estas desaprobado :(|</p>
+                `
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 200px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tipo de circuito segun su XL y XC</h1>
+    <form>
+        <label for="frec">
+            <span>Frecuencia</span>
+            <input type="number" placeholder="En Hz" id="frec">
+        </label>
+        <label for="c">
+            <span>Capacitancia</span>
+            <input type="number" placeholder="En milifaradios" id="capac">
+        </label>
+        <label for="l">
+            <span>Inductancia</span>
+            <input type="number" placeholder="En microhenrios" id="induc">
+        </label>
+        <button onclick="handleClick()" type="button">Calcular</button>
+    </form>
+    <div id="container"></div>
+    <p><a href="../index.html">Volver</a></p>
+    <script>
+        const $frec = document.getElementById("frec")
+        const $capac = document.getElementById("capac")
+        const $induc = document.getElementById("induc")
+        const $container = document.getElementById("container")
+
+        function handleClick(e) {
+            const frec = Number($frec.value)
+            const capac = Number($capac.value)
+            const induc = Number($induc.value)
+
+            const omega = 2 * 3.1416 * frec
+            const xl = omega * (induc / 1000000)
+            const xc = 1 / (omega * (capac / 1000))
+
+            let type
+
+            if (xl == xc) type = "resonancia"
+            else if (xc > xl) type = "capacitivo"
+            else type = "inductivo"
+
+            $container.innerHTML = `
+                <p>XL = ${xl}</p>
+                <p>XC = ${xc}</p>
+                <p>Es ${type}</p>
+            `
+        }
+    </script>
+</body>
+</html>

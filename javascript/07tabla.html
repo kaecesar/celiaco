@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de multiplicar</title>
+</head>
+<body>
+    <h1>Tablas de multiplicar</h1>
+    <div id="container"></div>
+
+    <script>
+        const $container = document.getElementById("container")
+        const num = Number(prompt("Dame un numero"))
+        let results = []
+
+        for (let i = 0; i <= 9; i++) {
+            results.push(num * i)
+        }
+
+        const mappedResults = results.map((result, index) => {
+            const p = document.createElement('p')
+            p.innerText = `${num}x${index} = ${result}`
+            return p
+        })
+
+        $container.append(...mappedResults)
+    </script>
+</body>
+</html>

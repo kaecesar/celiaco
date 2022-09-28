@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par o impar</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 200px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Par o impar</h1>
+    <form>
+        <label for="num">
+            <span>Numero</span>
+            <input type="number" placeholder="Ingresa un numero" id="num">
+        </label>
+        <button onclick="handleClick()" type="button">Calcular</button>
+    </form>
+    <div id="container"></div>
+    <p><a href="../index.html">Volver</a></p>
+    <script>
+        const $num = document.getElementById("num")
+        const $container = document.getElementById("container")
+
+        function handleClick(e) {
+            const a = Number($num.value)
+
+            const esPar = a % 2 === 0
+
+            if (esPar) {
+                $container.innerHTML = `El numero ${a} es par`
+            } else {
+                $container.innerHTML = `El numero ${a} es impar`
+            }
+        }
+    </script>
+</body>
+</html>
